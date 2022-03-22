@@ -1,5 +1,7 @@
 package com.example;
 
+import java.io.UnsupportedEncodingException;
+
 import com.fazecast.jSerialComm.*;
 
 
@@ -26,7 +28,13 @@ public class App {
                     return;
                 byte[] newData = new byte[comPort.bytesAvailable()];
                 int numRead = comPort.readBytes(newData, newData.length);
-                System.out.println("Read " + numRead + " bytes.");
+                try {
+                    String bruh = new String(newData, "UTF-8");
+                    System.out.println(bruh);
+                } catch (UnsupportedEncodingException e) {
+                    
+                }
+                
             }
         });
     }

@@ -1,5 +1,7 @@
+#include <Arduino.h>
+
 // Includes the Servo library
-#include <Servo.h>. 
+#include <Servo.h>
 
 // Defines Tirg and Echo pins of the Ultrasonic Sensor
 const int trigPin = 10;
@@ -22,11 +24,10 @@ void loop() {
   myServo.write(i);
   delay(30);
   distance = calculateDistance();// Calls a function for calculating the distance measured by the Ultrasonic sensor for each degree
-  
   Serial.print(i); // Sends the current degree into the Serial Port
   Serial.print(","); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
   Serial.print(distance); // Sends the distance value into the Serial Port
-  Serial.print("\n"); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
+  Serial.println("."); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
   }
   // Repeats the previous lines from 165 to 15 degrees
   for(int i=165;i>15;i--){  
@@ -36,7 +37,7 @@ void loop() {
   Serial.print(i); // Sends the current degree into the Serial Port
   Serial.print(","); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
   Serial.print(distance); // Sends the distance value into the Serial Port
-  Serial.print("\n"); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
+  Serial.println("."); // Sends addition character right next to the previous value needed later in the Processing IDE for indexing
   }
 }
 // Function for calculating the distance measured by the Ultrasonic sensor
